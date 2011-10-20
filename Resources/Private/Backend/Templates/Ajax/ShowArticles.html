@@ -1,0 +1,47 @@
+<f:layout name="Ajax" />
+<f:section name="content">
+<table width="100%" class="ajax_table">
+	<thead>
+		<tr>
+			<th>
+				Stückzahl
+			</th>
+			<th>
+				Titel
+			</th>	
+			<th>
+				Preis (Brutto)
+			</th>	
+			<th>
+				Preis (Netto)
+			</th>
+			<th>
+				Artikel-ID
+			</th>	
+			<th>
+				Steuern
+			</th>	
+		</tr>
+		</thead>
+		<tbody>
+		<f:for each="{articles}" as="article">
+			<tr>
+				<td>{article.amount}</td>
+				<td>{article.title}</td>
+				<td align="right">
+					<f:format.currency currencySign="CHF" decimalSeparator="." thousandsSeparator="'">
+						{article.priceGross}
+					</f:format.currency>
+				</td>
+				<td align="right">
+					<f:format.currency currencySign="CHF" decimalSeparator="." thousandsSeparator="'">
+						{article.priceNet}
+					</f:format.currency>
+				</td>
+				<td>{article.number}</td>	
+				<td align="right">{article.tax} %</td>						
+			</tr>
+		</f:for>
+	</tbody>
+</table>
+</f:section>

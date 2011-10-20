@@ -1,0 +1,132 @@
+<f:layout name="Default" />
+<f:section name="content">
+<script src="http://code.jquery.com/jquery-1.6.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+	table.tx_grbcommerceorder{
+		min-width: 850px;
+	}
+	
+	table.ajax_table{
+		border: 1px solid #cccccc;
+	    margin-bottom: 5px; 
+
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px; 
+	}
+	
+	table.ajax_table td,
+	table.ajax_table th{
+		padding: 2px 5px;
+	}	
+	
+	table.ajax_table thead{
+		background: #ccc;
+		font-weight: bold;
+	}		
+	
+	.link{
+		cursor:pointer;
+	}
+</style>
+<f:flashMessages />
+
+<f:if condition="{orders}">
+	<f:then>
+		<table  class="tx_grbcommerceorder" >
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th><f:translate key="tx_grbcommerceorder_domain_model_order.order_id" /></th>
+					<th style="text-align: right"><f:translate key="tx_grbcommerceorder_domain_model_order.sum_price_net" /></th>
+					<th style="text-align: right"><f:translate key="tx_grbcommerceorder_domain_model_order.sum_price_gross" /></th>
+					<th style="text-align: center"><f:translate key="tx_grbcommerceorder_domain_model_order.generate_invoice" /></th>
+					<th></th>		
+				</tr>
+			</thead>
+			<tbody>
+				<f:for each="{orders}" as="order">
+					<f:form method="post" action="update" name="orderMod" object="{order}" >
+						<tr>
+							<td>
+								<div class="link" id="get_address_{order.uid}">
+									<f:image src="{f:uri.resource(path:'Icons/address_icon.gif')}" alt="{order.orderId}" />
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$("#get_address_{order.uid}").click(function(){
+											$("#address_{order.uid}").load("{f:uri.action(action:'showCustomerDetails' controller:'Ajax' arguments:'{custFeUser:order.custFeUser}')}");
+											$("#address_ajax_loader_{order.uid}").show();
+											
+										});
+									});
+								</script>
+							</td>						
+							<td>
+								<div class="link" id="get_articles_{order.uid}">
+									<f:image src="{f:uri.resource(path:'Icons/order_icon.gif')}" alt="{order.orderId}" />
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$("#get_articles_{order.uid}").click(function(){
+											$("#articles_{order.uid}").load("{f:uri.action(action:'showArticles' controller:'Ajax' arguments:'{order:order}')}");
+											$("#articles_ajax_loader_{order.uid}").show();
+										});
+									});
+								</script>							
+							</td>
+							<td>
+								{order.orderId}
+							</td>							
+							<td align="right">
+								<f:format.currency currencySign="CHF" decimalSeparator="." thousandsSeparator="'">
+									{order.sumPriceNet}
+								</f:format.currency>
+							</td>
+							<td align="right">
+								<f:format.currency currencySign="CHF" decimalSeparator="." thousandsSeparator="'">
+									{order.sumPriceGross}
+								</f:format.currency>	
+							</td>	
+							<td align="center">
+								<f:link.external uri="{invoiceUri}index.php?id={invoicePid}&type={typePdf}&tx_commerce_pi6[order_id]={order.orderId}&filename={order.orderId}.pdf&L={order.feUserLanguage}" target="_blank">
+									<f:image src="{f:uri.resource(path:'Icons/pdf_icon.gif')}" alt="Invoice" />
+								</f:link.external>
+							</td>
+							<td>
+								<f:form.select property="pid" name="pid" options="{orderPages}" optionValueField="uid" optionLabelField="title" />			
+								<f:form.submit name="mySubmit" value="Move" /> 
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7" id="address_{order.uid}">
+								<div id="address_ajax_loader_{order.uid}" style="display:none;">
+									<f:image src="{f:uri.resource(path:'Icons/ajax_loader.gif')}" alt="{order.orderId}" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7" id="articles_{order.uid}">
+								<div id="articles_ajax_loader_{order.uid}" style="display:none;">
+									<f:image src="{f:uri.resource(path:'Icons/ajax_loader.gif')}" alt="{order.orderId}" />
+								</div>
+							</td>
+						</tr>					
+					</f:form>
+				</f:for>	
+			</tbody>		
+		</table>	
+	</f:then>
+	<f:else>
+		<div class="typo3-messages">
+			<div class="typo3-message message-information">
+				<div class="message-body">
+					<f:translate key="tx_grbcommerceorder_list_order.noOrder" />
+				</div>
+			</div>
+		</div>		
+	</f:else>
+</f:if>
+
+</f:section>

@@ -1,0 +1,83 @@
+# Module configuration
+module.tx_grbcommerceorder {
+	persistence {
+		storagePid = {$module.tx_grbcommerceorder.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_grbcommerceorder.view.templateRootPath}
+		partialRootPath = {$module.tx_grbcommerceorder.view.partialRootPath}
+		layoutRootPath = {$module.tx_grbcommerceorder.view.layoutRootPath}
+	}
+	settings{
+		orderPid 	= 212
+		invoicePid 	= 220
+		typePdf 	= 123
+	}
+}
+
+
+# -----------------------------------------------------------------------------------------
+# Extbase configuration
+# -----------------------------------------------------------------------------------------
+
+config.tx_extbase {
+    persistence{
+        enableAutomaticCacheClearing = 1
+        updateReferenceIndex = 0
+        classes {
+			Tx_GrbCommerceOrder_Domain_Model_Order {
+        		mapping {
+            		tableName = tx_commerce_orders
+					columns {
+						# db-field tx_commerce_orders    = db-field domain-model
+						# ------------------------------------------------------
+                    	pid.mapOnProperty 		= pid
+                    	newpid.mapOnProperty 	= newPid
+                    }
+        		}
+    		}
+            Tx_GrbCommerceOrder_Domain_Model_OrderArticles {
+                mapping {
+                    tableName = tx_commerce_order_articles
+                    columns {
+                    	pid.mapOnProperty 		= pid
+                    }
+                }
+            }
+            Tx_GrbCommerceOrder_Domain_Model_Page {
+                mapping {
+                    tableName = pages
+                    columns {
+                        pid.mapOnProperty = parentPage
+                    }
+                }
+            }  
+			Tx_Extbase_Domain_Model_FrontendUser {
+				mapping {
+					tableName = fe_users
+					recordType = Tx_Extbase_Domain_Model_FrontendUser
+					columns {
+						lockToDomain.mapOnProperty = lockToDomain
+					}
+				}
+			}
+			Tx_Extbase_Domain_Model_FrontendUserGroup {
+				mapping {
+					tableName = fe_groups
+					recordType = Tx_Extbase_Domain_Model_FrontendUserGroup
+					columns {
+						lockToDomain.mapOnProperty = lockToDomain
+					}
+				}
+			}                      
+			Tx_GrbCommerceOrder_Domain_Model_FrontendUser {
+                mapping {
+                    tableName = fe_users
+                    columns {
+						lockToDomain.mapOnProperty = lockToDomain
+                    }
+                }
+            }            
+        }
+    }
+}

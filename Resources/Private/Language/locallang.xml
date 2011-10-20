@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Commerce Order extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_grbcommerceorder_domain_model_order">Commerce Orders</label>
+			<label index="tx_grbcommerceorder_domain_model_order.order_id">Order ID</label>
+			<label index="tx_grbcommerceorder_domain_model_order.sum_price_net">Totalprice [net]</label>
+			<label index="tx_grbcommerceorder_domain_model_order.sum_price_gross">Totalprice [gross]</label>
+			<label index="tx_grbcommerceorder_domain_model_order.cust_feuser">custFeuser</label>
+			<label index="tx_grbcommerceorder_domain_model_order.show_single">Show Single</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles">OrderArticles</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.order_id">Order ID</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.title">Title</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.price_net">Price [net]</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.price_gross">Price [gross]</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.amount">Amount</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.article_type_uid">Article Type ID</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.article_number">Article-Number</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.subtitle">Subtitle</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.tax">Tax</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.order_uid">Order-ID</label>
+			<label index="tx_grbcommerceorder_domain_model_feuser">FeUser</label>
+			<label index="tx_grbcommerceorder_domain_model_order.generate_invoice">Generate Invoice</label>
+			<label index="tx_grbcommerceorder_list_order.noOrder">There are no orders in this folder</label>
+		</languageKey>
+		
+		<languageKey index="de" type="array">
+			<label index="tx_grbcommerceorder_domain_model_order">Shop-Bestellungen</label>
+			<label index="tx_grbcommerceorder_domain_model_order.order_id">Bestellnummer</label>
+			<label index="tx_grbcommerceorder_domain_model_order.sum_price_net">Nettopreis</label>
+			<label index="tx_grbcommerceorder_domain_model_order.sum_price_gross">Bruttopreis</label>
+			<label index="tx_grbcommerceorder_domain_model_order.cust_feuser">custFeuser</label>
+			<label index="tx_grbcommerceorder_domain_model_order.show_single">Detailansicht</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles">OrderArticles</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.order_id">Bestellnummer</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.title">Titel</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.price_net">Nettopreis</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.price_gross">Bruttopreis</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.amount">Stückzahl</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.article_type_uid">Artikel-Type</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.article_number">Artikelnummer</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.subtitle">Untertitel</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.tax">Steuern</label>
+			<label index="tx_grbcommerceorder_domain_model_orderarticles.order_uid">Bestell-ID</label>
+			<label index="tx_grbcommerceorder_domain_model_feuser">FeUser</label>
+			<label index="tx_grbcommerceorder_domain_model_order.generate_invoice">Rechnung generieren</label>
+			<label index="tx_grbcommerceorder_list_order.noOrder">Dieser Ordner enthält keine Bestellungen.</label>
+		</languageKey>		
+	</data>
+</T3locallang>
